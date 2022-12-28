@@ -1,17 +1,19 @@
+setup: prepare install lock
+
 install:
 	poetry install
 
-build:
-	poetry build
-
-publish:
-	poetry publish --dry-run
-
-package-install:
-	python -m pip install --force-reinstall dist/*.whl
+lock:
+	poetry lock
 
 lint:
 	poetry run flake8 page_analyzer
+
+prepare:
+	cp -n .env.example .env
+
+check:
+	poetry check
 
 test:
 	poetry run pytest tests
