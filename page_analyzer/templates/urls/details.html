@@ -59,24 +59,24 @@
         {% if checks %}
         {% for check in checks %}
         <tr>
-            <th scope="col">
+            <td>
                 {{ check.id }}
-            </th>
-            <th scope="col">
+            </td>
+            <td>
                 {{ check.status_code }}
-            </th>
-            <th scope="col">
+            </td>
+            <td>
                 {{ check.h1 }}
-            </th>
-            <th scope="col">
+            </td>
+            <td>
                 {{ check.title }}
-            </th>
-            <th scope="col">
+            </td>
+            <td>
                 {{ check.description }}
-            </th>
-            <th scope="col">
+            </td>
+            <td>
                 {{ check.created_at }}
-            </th>
+            </td>
         </tr>
         {% endfor %}
         {% endif %}

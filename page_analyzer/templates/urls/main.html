@@ -29,9 +29,9 @@
         {% if data %}
         {% for url, check in data %}
         <tr>
-            <th scope="col">
+            <td>
                 {{ url.id }}
-            </th>
+            </td>
             <td>
                 <a href="{{ url_for('url_details', id=url.id) }}">
                     {{ url.name }}
