@@ -1,0 +1,88 @@
+{% extends "basic.html" %}
+{% block title %} Сайт {% endblock %}
+
+{% block content %}
+<h1>Сайт: {{ url.name }}</h1>
+
+<br>
+<br>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover text-nowrap" data-test="url">
+        <tbody>
+        <tr>
+            <td>ID</td>
+            <td>{{ url.id }}</td>
+        </tr>
+        <tr>
+            <td>Имя</td>
+            <td>{{ url.name }}</td>
+        </tr>
+        <tr>
+            <td>Дата создания</td>
+            <td>{{ url.created_at }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 class="mt-5 mb-3">Проверки</h2>
+<form method="post" action="{{ url_for('url_checks', id=url.id) }}">
+    <input type="submit" class="btn btn-primary" value="Запустить проверку">
+</form>
+
+<div class=table-responsive">
+    <table class="table table-bordered mt-2" data-test="checks">
+        <thead>
+        <tr>
+            <th scope="col">
+                ID
+            </th>
+            <th scope="col">
+                Код ответа
+            </th>
+            <th scope="col">
+                h1
+            </th>
+            <th scope="col">
+                title
+            </th>
+            <th scope="col">
+                description
+            </th>
+            <th scope="col">
+                Дата создания
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if checks %}
+        {% for check in checks %}
+        <tr>
+            <th scope="col">
+                {{ check.id }}
+            </th>
+            <th scope="col">
+                {{ check.status }}
+            </th>
+            <th scope="col">
+                {{ check.h1 }}
+            </th>
+            <th scope="col">
+                {{ check.title }}
+            </th>
+            <th scope="col">
+                {{ check.description }}
+            </th>
+            <th scope="col">
+                {{ check.created_at }}
+            </th>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

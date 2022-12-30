@@ -1,0 +1,57 @@
+{% extends "basic.html" %}
+{% block title %} Сайты {% endblock %}
+
+{% block content %}
+<h1>Сайты</h1>
+
+<br>
+<br>
+
+<div class="table-responsive">
+    <table class="table table-bordered" data-test="urls">
+        <thead>
+        <tr>
+            <th scope="col">
+                Идентификатор
+            </th>
+            <th scope="col">
+                Наименование
+            </th>
+            <th scope="col">
+                Последняя проверка
+            </th>
+            <th scope="col">
+                Код ответа
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if data %}
+        {% for url, check in data %}
+        <tr>
+            <th scope="col">
+                {{ url.id }}
+            </th>
+            <td>
+                <a href="{{ url_for('url_details', id=url.id) }}">
+                    {{ url.name }}
+                </a>
+            </td>
+            {% if check %}
+            <td>
+                {{ check.created_at }}
+            </td>
+            <td>
+                {{ check.status }}
+            </td>
+            {% else %}
+            <td></td>
+            <td></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
