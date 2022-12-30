@@ -9,7 +9,7 @@
 
 <div class="table-responsive">
     <table class="table table-bordered" data-test="urls">
-        <thead>
+        <tbody>
         <tr>
             <th scope="col">
                 Идентификатор
@@ -24,8 +24,6 @@
                 Код ответа
             </th>
         </tr>
-        </thead>
-        <tbody>
         {% if data %}
         {% for url, check in data %}
         <tr>

@@ -33,7 +33,7 @@
 
 <div class=table-responsive">
     <table class="table table-bordered mt-2" data-test="checks">
-        <thead>
+        <tbody>
         <tr>
             <th scope="col">
                 ID
@@ -54,8 +54,6 @@
                 Дата создания
             </th>
         </tr>
-        </thead>
-        <tbody>
         {% if checks %}
         {% for check in checks %}
         <tr>
