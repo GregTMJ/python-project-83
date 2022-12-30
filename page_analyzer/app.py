@@ -49,15 +49,6 @@ def init_db():
         db.commit()
 
 
-@app.teardown_appcontext
-def close_db(error):
-    """
-    closing database connection when finished
-    """
-    if hasattr(g, 'postgres_db'):
-        g.postgres_db.close()
-
-
 @app.route('/', methods=['GET'])
 def homepage():
     """
@@ -202,7 +193,7 @@ def url_checks(id: int):
 
     with conn.cursor(cursor_factory=NamedTupleCursor) as cursor:
         cursor.execute(
-            'INSERT INTO url_checks (url_id, status, h1,'
+            'INSERT INTO url_checks (url_id, status_code, h1,'
             ' title, description, created_at) values '
             '(%s, %s, %s, %s, %s, %s)',
             (id, response.status_code, page_content.get('h1'),
